@@ -14,7 +14,7 @@
 		"type-check": "vue-tsc --build",
 		"deploy": "npm run build && wrangler deploy",
 		"cf-typegen": "wrangler types",
-		"start": "wrangler pages dev ./public --proxy 5173 --config wrangler.dev.toml"
+		"start": "wrangler pages dev ./public --proxy 5173"
 	},
 	"dependencies": {
 		"browser-image-compression": "^2.0.2",
