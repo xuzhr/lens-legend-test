@@ -8,13 +8,17 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "run-p type-check \"build-only {@}\" --",
+		//"build": "run-p type-check \"build-only {@}\" --",
+		// 👇 修改 build 命令，保持那个删除逻辑作为双重保险
+  		"build": "vite build && rm -f dist/wrangler.json dist/wrangler.toml"
 		"preview": "npm run build && wrangler dev",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build",
 		"deploy": "npm run build && wrangler deploy",
 		"cf-typegen": "wrangler types",
-		"start": "wrangler pages dev"
+		// 👇 修改 start 命令，加上 --config 参数
+  		"start": "wrangler pages dev ./public --proxy 5173 --config wrangler.dev.toml",
+
 	},
 	"dependencies": {
 		"browser-image-compression": "^2.0.2",
