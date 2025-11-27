@@ -8,13 +8,13 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build && rm -f dist/wrangler.json dist/wrangler.toml",
+		"build": "vite build",
 		"preview": "npm run build && wrangler dev",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build",
 		"deploy": "npm run build && wrangler deploy",
 		"cf-typegen": "wrangler types",
-		"start": "wrangler pages dev ./public --proxy 5173"
+		"start": "wrangler pages dev ./public --proxy 5173 --config wrangler.dev.toml"
 	},
 	"dependencies": {
 		"browser-image-compression": "^2.0.2",
