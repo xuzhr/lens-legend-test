@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "vite build && rm -f dist/wrangler.json dist/wrangler.toml",
 		"preview": "npm run build && wrangler dev",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build",
