@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lens & Legend - Luxury Concept</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. 宪法级配色变量 --- */
+        :root {
+            --bg-deep: #1A1A1D;       /* 深空灰：宇宙的底色 */
+            --bg-card: #232326;       /* 卡片灰：比背景稍亮 */
+            --gold-matte: #C5A059;    /* 磨砂金：岁月的沉淀 */
+            --gold-light: #E5C585;    /* 高光金：用于交互反馈 */
+            --text-main: #F1F5F9;     /* 云峰白：正文 */
+            --text-muted: #94A3B8;    /* 这里的灰度要够高级 */
+            --border-thin: rgba(197, 160, 89, 0.2); /* 金色微光边框 */
+        }
+
+        /* --- 2. 全局重置 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif; /* 正文用现代无衬线 */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* 让字体在 Mac 上看起来更贵 */
+            overflow-x: hidden;
+        }
+
+        /* --- 3. 昂贵的排版 --- */
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif; /* 标题用经典衬线 */
+            font-weight: 600;
+        }
+
+        .tracking-wide { letter-spacing: 0.15em; } /* 字间距拉大，立刻显贵 */
+        
+        /* --- 4. 布局组件 --- */
+        .container {
+            max-width: 800px; /* 限制宽度，营造杂志感 */
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Header: 极简导航 --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* 模拟我们的 CSS Logo */
+        .css-logo {
+            width: 40px; height: 40px;
+            border: 1px solid var(--gold-matte);
+            position: relative;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .css-logo::before {
+            content: "✦";
+            color: var(--text-main);
+            font-size: 18px;
+        }
+        /* L 造型模拟 */
+        .css-logo::after {
+            content: "";
+            position: absolute;
+            top: 4px; left: 4px;
+            width: 10px; height: 10px;
+            border-top: 2px solid var(--gold-matte);
+            border-left: 2px solid var(--gold-matte);
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--text-main);
+        }
+
+        .user-profile {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--gold-matte); /* 简单的金色圆点代表用户 */
+            opacity: 0.8;
+        }
+
+        /* --- Hero Section: 仪式感上传 --- */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            background: linear-gradient(to bottom, #fff, #aaa);
+            -webkit-background-clip: text;
+            color: transparent; /* 文字渐变，金属质感 */
+        }
+
+        .hero p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+        }
+
+        /* 昂贵的上传区域：不做成框，做成“祭坛” */
+        .upload-altar {
+            border: 1px dashed var(--border-thin);
+            padding: 60px;
+            border-radius: 2px; /* 高端设计不喜欢大圆角，喜欢微圆角 */
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-altar:hover {
+            border-color: var(--gold-matte);
+            background: rgba(197, 160, 89, 0.03);
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--gold-matte);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .upload-text {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* --- Gallery: 时光画廊 --- */
+        .gallery-header {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--gold-matte);
+            padding-left: 20px;
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .gallery-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 瀑布流卡片 */
+        .card {
+            margin-bottom: 60px; /* 极大的间距，奢侈的留白 */
+            position: relative;
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 400px;
+            background-color: #2a2a2a;
+            position: relative;
+            overflow: hidden;
+            /* 给图片加一个高级的内阴影 */
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.8); 
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8; /* 让图片暗一点，显得深沉 */
+            transition: opacity 0.5s ease, transform 0.7s ease;
+            filter: sepia(10%) contrast(110%); /* 胶片滤镜 */
+        }
+
+        .card:hover .card-img {
+            opacity: 1;
+            transform: scale(1.02); /* 缓慢放大 */
+        }
+
+        /* 悬浮的元数据 */
+        .meta-float {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: var(--gold-matte);
+            background: rgba(0,0,0,0.6);
+            padding: 4px 10px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .card-content {
+            margin-top: 24px;
+            padding: 0 10px;
+            border-left: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover .card-content {
+            border-left-color: var(--gold-matte); /* 鼠标悬停时左侧亮起金线 */
+        }
+
+        .location-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .story-text {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        /* --- 底部 --- */
+        footer {
+            text-align: center;
+            padding: 80px 0;
+            color: #444;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* 装饰元素：金色的细线 */
+        .gold-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--gold-matte);
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-wrapper">
+                <div class="css-logo"></div>
+                <span class="brand-name serif tracking-wide">LENS & LEGEND</span>
+            </div>
+            <div class="user-profile"></div>
+        </header>
+
+        <section class="hero">
+            <h1>The Archive of Time</h1>
+            <p>“Unlock history in your gallery.”</p>
+            
+            <div class="upload-altar">
+                <div class="upload-icon">✦</div>
+                <div class="upload-text">Drop your memory here to begin the ritual</div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="gallery-header">
+                <h2 class="gallery-title">Collection</h2>
+                <span class="gallery-subtitle">Vol. 1 — 2025</span>
+            </div>
+
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <div class="meta-float">23.1134° N, 113.3173° E</div>
+                    <img src="https://images.unsplash.com/photo-1583486742436-464d823a9646?q=80&w=2000&auto=format&fit=crop" class="card-img" alt="Guangzhou Tower">
+                </div>
+                <div class="card-content">
+                    <h3 class="location-title serif">Guangzhou Tower, China</h3>
+                    <div class="gold-line"></div>
+                    <p class="story-text">
+                        Standing tall amidst the modern skyline, the Canton Tower reflects the city's ambition. 
+                        Yet, beneath its colorful neon lights, one can almost hear the echoes of the Pearl River's ancient trade routes...
+                    </p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <div class="meta-float">41.8902° N, 12.4922° E</div>
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1996&auto=format&fit=crop" class="card-img" alt="Rome">
+                </div>
+                <div class="card-content">
+                    <h3 class="location-title serif">The Colosseum, Rome</h3>
+                    <div class="gold-line"></div>
+                    <p class="story-text">
+                        Here, the roar of the crowd once drowned out the thoughts of emperors. 
+                        The stone arches, now weathered by two millennia, stand as a silent testament to the empire's glory and brutality.
+                    </p>
+                </div>
+            </article>
+
+        </section>
+
+        <footer>
+            <span class="serif">Designed by Old Code Foal & AI</span>
+        </footer>
+    </div>
+
+</body>
+</html>
